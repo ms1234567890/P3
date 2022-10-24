@@ -1,5 +1,55 @@
 /*LOADER*/
 
+.screen_loader {
+	background: white;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    animation: fadeout 3s ease-in-out forwards;
+}
+
+@keyframes fadeout {
+  from {
+    visibility: visible;
+    opacity: 1;
+  }
+
+ to {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+.fa-spinner {
+	color: #9356DC;
+	font-size: x-large;
+	animation: rotation 2s infinite linear;
+}
+
+.fa-spinner:nth-child(2) {
+	color: #FF79DA;
+	font-size: x-large;
+}
+
+.fa-spinner:nth-child(3) {
+	color: #99E2D0;
+	font-size: x-large;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
 
 /*GENERAL*/
 
@@ -46,11 +96,22 @@ section {
 
 header {
 	display: flex;
-	justify-content: center;
+	position: relative;
 }
 
-.fa-arrow {
+a .fa-arrow-left {
+	margin: 45px 0 0 30px;
+	text-decoration: none;
+	color: black;
+}
+
+header i::before {
 	position: absolute;
+}
+
+header h1 {
+	margin: auto;
+	padding: 25px;
 }
 
 /*FORM*/
@@ -83,23 +144,19 @@ header {
 }
 
 button {
-	align-self: center;
 	padding: 15px;
 	border-radius: 25px;
     background: linear-gradient(355deg, #9356DC, #FF79DA);
     border: none;
+    color: white;
+	display: flex;
+	margin: auto;
 }
 
-:hover button {
+button:hover {
 	background: linear-gradient(355deg, #986eca, #f6a7e0);
 	box-shadow: 0 1px 2px 1px rgb(207 201 201);
 }
-
-button a {
-	color: white;
-	margin: 0;
-}
-
 
 /*FONCTIONS*/
 
@@ -176,9 +233,15 @@ li i {
 
 .fa-heart:hover {
 	transition: 0.5s;
-  	background: linear-gradient(180deg, #9356DC 10%, #FF79DA 60%);
 }
 
+@media screen and (min-width: 767px) {
+	
+	#restaurants_list {
+	display: flex;
+	align-items: center;
+	}
+}
 
 /*MENU*/
 
@@ -190,8 +253,19 @@ li i {
 .name {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
+	justify-content: space-between;
 	border-radius: 20px 20px 0 0;
+	margin-top: -50px;
+	background-color: #F6F6F6;
+}
+
+.name h1 {
+	margin-left: 30px;
+}
+
+.name .fa-heart {
+	justify-content: center;
+	margin: 20px;
 }
 
 .liste {
@@ -202,6 +276,13 @@ li i {
 
 .liste h2 {
 	font-weight: lighter;
+	margin: 0 0 5px 0;
+}
+
+.ligne_liste {
+	background-color: #99E2D0;
+	height: 5px;
+	width: 60px;
 	margin: 0 0 30px 0;
 }
 
@@ -213,13 +294,67 @@ li i {
 .element_liste {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
-	align-items: flex-end;
 	background-color: white;
 	box-shadow: 0 1px 2px 1px rgb(207 201 201);
 	border-radius: 20px;
-	padding: 12px;
 	margin-bottom: 20px;
+	animation: show .5s ease-in-out;
+    animation-fill-mode: backwards;
+    transition: all .2s ease-in-out;
+    overflow: hidden;
+    cursor: pointer;
+    width: 100%;
+}
+
+@keyframes show {
+	0% {
+    opacity: 0;
+}
+50% {
+    opacity: .5;
+    transform: scale(1.1);
+}
+100% {
+    opacity: 1;
+    transform: scale(1);
+}
+}
+
+.element_texte {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 12px;
+	align-items: flex-end;
+	width: 100%;
+}
+
+.element_check {
+	display: flex;
+	justify-content: center;
+	height: 71px;
+	width: 15%;
+	background-color: #99E2D0;
+	border-radius: 0 20px 20px 0;
+	transform: translateX(100%);
+    transition: 0.5s ease;
+}
+
+.element_liste:hover .element_check {
+	margin-right: 0px;
+	transform: translateX(0%);
+    transition: 0.5s ease;
+}
+
+.fa-circle-check {
+	filter: invert(100%);
+	align-self: center;
+	font-size: x-large;
+}
+
+.element_liste:hover .fa-circle-check {
+  animation: check 0.5s ease forwards;
+  animation-delay: 1s;
 }
 
 /*FOOTER*/
