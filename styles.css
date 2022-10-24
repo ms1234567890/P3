@@ -67,7 +67,7 @@ a {
 }
 
 h2 {
-	margin-left: 30px;
+	margin: 30px;
 }
 
 p, h3 {
@@ -143,7 +143,7 @@ header h1 {
 	text-align: center;
 }
 
-button {
+.button {
 	padding: 15px;
 	border-radius: 25px;
     background: linear-gradient(355deg, #9356DC, #FF79DA);
@@ -151,9 +151,10 @@ button {
     color: white;
 	display: flex;
 	margin: auto;
+	margin-top: 20px;
 }
 
-button:hover {
+.button:hover {
 	background: linear-gradient(355deg, #986eca, #f6a7e0);
 	box-shadow: 0 1px 2px 1px rgb(207 201 201);
 }
@@ -173,6 +174,7 @@ li {
 	margin-bottom: 20px;
 	display: flex;
 	justify-content: left;
+	align-items: center;
 }
 
 li .number {
@@ -192,6 +194,28 @@ li i {
 	align-self: center;
 }
 
+li:hover {
+	background-color: #E6E6FA;
+}
+
+@media screen and (min-width: 767px) {
+	
+	ol { 
+	display: flex;
+	flex-direction: row; 
+	justify-content: space-around;
+	gap: 20px;
+	}
+
+	li .number {
+		position: relative;
+		left: -30px;
+		width: 25px;
+		height: 25px;
+	}
+}
+
+
 /*RESTAURANTS*/
 
 #restaurants_list {
@@ -207,13 +231,24 @@ li i {
     margin-bottom: 20px;
     margin-top: 10px;
     width: 80%;
-    max-width: 700px;
+    max-width: 550px;
     box-shadow: 0 1px 2px 1px rgb(207, 201, 201);
     position: relative;
 }
 
 #restaurants_list .image {
     border-radius: 20px 20px 0 0;
+}
+
+.nouveau {
+	background-color: #99E2D0;
+	color: #375d35;
+	border: #375d35 solid 2px;
+	border-radius: 5px;
+	position: absolute;
+	right: 5px;
+    padding: 10px;
+    margin: 20px;
 }
 
 .text {
@@ -232,14 +267,20 @@ li i {
 }
 
 .fa-heart:hover {
-	transition: 0.5s;
+	content: "";
+    opacity: 0;
+    transition: 0.5s;
+    background: linear-gradient(180deg, #9356DC 10%, #FF79DA 60%);
 }
 
 @media screen and (min-width: 767px) {
 	
 	#restaurants_list {
-	display: flex;
-	align-items: center;
+		display: flex;
+		flex-direction: row;
+    	flex-wrap: wrap;
+    	justify-content: space-around;
+    	gap: 50px;
 	}
 }
 
@@ -279,6 +320,10 @@ li i {
 	margin: 0 0 5px 0;
 }
 
+.liste p {
+	text-overflow: ellipsis;
+}
+
 .ligne_liste {
 	background-color: #99E2D0;
 	height: 5px;
@@ -304,6 +349,18 @@ li i {
     overflow: hidden;
     cursor: pointer;
     width: 100%;
+}
+
+.element_liste:nth-child(2) {
+	animation-delay: 0.3s;
+}
+
+.element_liste:nth-child(3) {
+	animation-delay: 0.6s;
+}
+
+.element_liste:nth-child(4) {
+	animation-delay: 0.9s;
 }
 
 @keyframes show {
@@ -350,11 +407,30 @@ li i {
 	filter: invert(100%);
 	align-self: center;
 	font-size: x-large;
+	transform: rotate(360deg);
+	transition: 0.4s ease-in-out;
+	transition-delay: 0.4s;
 }
 
-.element_liste:hover .fa-circle-check {
-  animation: check 0.5s ease forwards;
-  animation-delay: 1s;
+.element_liste:hover .element_check .fa-circle-check {
+  transform: rotate(0deg);
+}
+
+@media screen and (min-width: 992px) {
+	
+	.listes {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+	}
+
+	.liste {
+		width: 100%;
+	}
+}
+
+.menu .button {
+	font-size:  large;
 }
 
 /*FOOTER*/
