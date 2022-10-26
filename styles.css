@@ -266,11 +266,31 @@ li:hover {
 	justify-content: space-around;
 }
 
-.fa-heart:hover {
-	content: "";
-    opacity: 0;
-    transition: 0.5s;
-    background: linear-gradient(180deg, #9356DC 10%, #FF79DA 60%);
+.heart_icon {
+	position: relative;
+    align-self: center;
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+}
+
+.titles .fa-heart {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+}
+
+.heart_icon:hover .far {
+	display: none;
+}
+
+.heart_icon:hover .fa-heart {
+	background: linear-gradient(to bottom, #9356DC 0%, #FF79DA 100%);
+  	-webkit-background-clip: text;
+  	-moz-background-clip: text;
+  	background-clip: text;
+  	-webkit-text-fill-color: transparent;
 }
 
 @media screen and (min-width: 767px) {
@@ -304,9 +324,13 @@ li:hover {
 	margin-left: 30px;
 }
 
-.name .fa-heart {
-	justify-content: center;
-	margin: 20px;
+.name .heart_icon {
+	position: relative;
+    align-self: center;
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+    right: 30px;
 }
 
 .liste {
@@ -318,10 +342,6 @@ li:hover {
 .liste h2 {
 	font-weight: lighter;
 	margin: 0 0 5px 0;
-}
-
-.liste p {
-	text-overflow: ellipsis;
 }
 
 .ligne_liste {
@@ -383,23 +403,31 @@ li:hover {
 	justify-content: space-between;
 	margin: 12px;
 	align-items: flex-end;
-	width: 100%;
+	min-width: calc(100% - 24px);
+	transition: 0.5s ease;
+}
+
+.element_menu {
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.element_menu p, h3 {
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.element_liste:hover .element_texte {
+	min-width: calc(100% - 104px);
 }
 
 .element_check {
 	display: flex;
 	justify-content: center;
 	height: 71px;
-	width: 15%;
+	width: 80px;
 	background-color: #99E2D0;
 	border-radius: 0 20px 20px 0;
-	transform: translateX(100%);
-    transition: 0.5s ease;
-}
-
-.element_liste:hover .element_check {
-	margin-right: 0px;
-	transform: translateX(0%);
     transition: 0.5s ease;
 }
 
