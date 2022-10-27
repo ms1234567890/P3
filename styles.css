@@ -269,7 +269,8 @@ li:hover {
 .heart_icon {
 	position: relative;
     align-self: center;
-    width: 32px;
+    text-align: center;
+    width: 36px;
     height: 32px;
     overflow: hidden;
 }
@@ -288,10 +289,26 @@ li:hover {
 .heart_icon:hover .fa-heart {
 	background: linear-gradient(to bottom, #9356DC 0%, #FF79DA 100%);
   	-webkit-background-clip: text;
-  	-moz-background-clip: text;
-  	background-clip: text;
   	-webkit-text-fill-color: transparent;
+  	animation: show .5s ease-in-out;
+    animation-fill-mode: backwards;
+    transition: all .2s ease-in-out;
 }
+
+@keyframes opacity {
+	0% {
+    opacity: 0;
+}
+50% {
+    opacity: .5;
+    transform: scale(1.1);
+}
+100% {
+    opacity: 1;
+    transform: scale(1);
+}
+}
+
 
 @media screen and (min-width: 767px) {
 	
